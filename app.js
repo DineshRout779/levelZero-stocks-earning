@@ -3,15 +3,47 @@ let stocksQuantity = document.querySelector('#stocks-quantity');
 let currentPrice = document.querySelector('#current-price');
 
 const checkBtn = document.querySelector('#btn-check');
+const resetBtn = document.querySelector('#btn-reset');
+
 const outputDiv = document.querySelector('#output');
+
+let purchaseInputError = document.querySelector('#purchase-error');
+let quantityInputError = document.querySelector('#quantity-error');
+let currentInputError = document.querySelector('#current-error');
 
 checkBtn.addEventListener('click', (e) => {
   e.preventDefault();
   let costPrice = purchasePrice.value;
   let qty = stocksQuantity.value;
   let currPrice = currentPrice.value;
-  calculateReturn(costPrice, qty, currPrice);
+  validateData(costPrice, qty, currPrice);
 });
+
+resetBtn.addEventListener('click', () => {
+  clearInputError();
+  outputDiv.innerHTML = '';
+});
+
+const clearInputError = () => {
+  purchaseInputError.innerHTML = '';
+  quantityInputError.innerHTML = '';
+  currentInputError.innerHTML = '';
+};
+
+const validateData = (costPrice, qty, currPrice) => {
+  clearInputError();
+  if (costPrice === '') {
+    purchaseInputError.innerHTML = 'This field is required';
+  }
+  if (qty === '') {
+    quantityInputError.innerHTML = 'This field is required';
+  }
+  if (currPrice === '') {
+    currentInputError.innerHTML = 'This field is required';
+  } else {
+    calculateReturn(costPrice, qty, currPrice);
+  }
+};
 
 const calculateReturn = (costPrice, qty, currPrice) => {
   let diff = (costPrice - currPrice) * qty;
