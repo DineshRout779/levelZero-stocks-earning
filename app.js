@@ -51,14 +51,23 @@ const calculateReturn = (costPrice, qty, currPrice) => {
   let perc = (diff / (costPrice * qty)) * 100;
   outputDiv.innerHTML = '';
   if (diff > 0) {
-    outputDiv.innerHTML = `${Math.abs(perc)}% loss. Lost amount is ${Math.abs(
+    let msg = `${Math.abs(perc)}% loss.
+       Lost amount is ${Math.abs(diff)} Rupees`;
+    outputDiv.style.backgroundColor = 'rgb(246, 97, 97)';
+    showOutput(msg);
+  } else if (perc < 0) {
+    let msg = `${Math.abs(perc)}% profit. Profit amount is ${Math.abs(
       diff
     )} Rupees`;
-  } else if (perc < 0) {
-    outputDiv.innerHTML = `${Math.abs(
-      perc
-    )}% profit. Profit amount is ${Math.abs(diff)} Rupees`;
+    outputDiv.style.backgroundColor = 'rgb(67, 228, 129)';
+    showOutput(msg);
   } else {
-    outputDiv.innerHTML = 'Neither profit nor loss!';
+    let msg = 'Neither profit nor loss!';
+    outputDiv.style.backgroundColor = 'rgb(67, 228, 129)';
+    showOutput(msg);
   }
+};
+
+const showOutput = (msg) => {
+  outputDiv.innerHTML = msg;
 };
