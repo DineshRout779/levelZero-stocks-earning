@@ -40,7 +40,8 @@ const validateData = (costPrice, qty, currPrice) => {
   }
   if (currPrice === '') {
     currentInputError.innerHTML = 'This field is required';
-  } else {
+  }
+  if (costPrice !== '' && qty !== '' && currPrice !== '') {
     calculateReturn(costPrice, qty, currPrice);
   }
 };
