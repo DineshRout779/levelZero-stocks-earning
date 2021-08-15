@@ -80,3 +80,10 @@ label {
 .btn + .btn {
   margin-left: 1em;
 }
+
+#output {
+  text-align: center;
+  padding: 1em;
+  border-radius: 4px;
+  color: #fff;
+}
