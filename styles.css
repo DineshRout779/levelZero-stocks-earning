@@ -82,6 +82,8 @@ label {
 }
 
 #output {
+  max-width: 360px;
+  margin: 0 auto;
   text-align: center;
   padding: 1em;
   border-radius: 4px;
