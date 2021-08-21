@@ -22,6 +22,7 @@ checkBtn.addEventListener('click', (e) => {
 resetBtn.addEventListener('click', () => {
   clearInputError();
   outputDiv.innerHTML = '';
+  outputDiv.style.display = 'none';
 });
 
 const clearInputError = () => {
@@ -49,6 +50,8 @@ const validateData = (costPrice, qty, currPrice) => {
 const calculateReturn = (costPrice, qty, currPrice) => {
   let diff = (costPrice - currPrice) * qty;
   let perc = (diff / (costPrice * qty)) * 100;
+  perc = perc.toPrecision(4);
+  outputDiv.style.display = 'block';
   outputDiv.innerHTML = '';
   if (diff > 0) {
     let msg = `${Math.abs(perc)}% loss.
