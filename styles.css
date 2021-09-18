@@ -12,6 +12,7 @@ body {
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  position: relative;
 }
 
 header {
@@ -23,6 +24,10 @@ header {
 h1 {
   margin: 0.5em 0;
   line-height: 1;
+}
+
+a {
+  display: inline-block;
 }
 
 .container {
@@ -88,4 +93,18 @@ label {
   padding: 1em;
   border-radius: 4px;
   color: #fff;
+}
+
+.footer {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  padding: 1em 0;
+  text-align: center;
+}
+
+.footer a {
+  margin: 0 1em;
+  color: rgb(67, 228, 129);
 }
