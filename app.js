@@ -33,24 +33,26 @@ const clearInputError = () => {
 
 const validateData = (costPrice, qty, currPrice) => {
   clearInputError();
-  if (costPrice === '') {
-    purchaseInputError.innerHTML = 'This field is required';
+  if (costPrice === '' || costPrice <= 0) {
+    purchaseInputError.innerHTML = 'Invalid input';
   }
-  if (qty === '') {
-    quantityInputError.innerHTML = 'This field is required';
+  if (qty === '' || qty <= 0) {
+    quantityInputError.innerHTML = 'Invalid input';
   }
-  if (currPrice === '') {
-    currentInputError.innerHTML = 'This field is required';
+  if (currPrice === '' || currPrice < 0) {
+    currentInputError.innerHTML = 'Invalid input';
   }
   if (costPrice !== '' && qty !== '' && currPrice !== '') {
-    calculateReturn(costPrice, qty, currPrice);
+    if (costPrice > 0 && qty > 0 && currPrice > 0) {
+      calculateReturn(costPrice, qty, currPrice);
+    }
   }
 };
 
 const calculateReturn = (costPrice, qty, currPrice) => {
   let diff = (costPrice - currPrice) * qty;
   let perc = (diff / (costPrice * qty)) * 100;
-  perc = perc.toPrecision(4);
+  perc = perc.toPrecision(2);
   outputDiv.style.display = 'block';
   outputDiv.innerHTML = '';
   if (diff > 0) {
